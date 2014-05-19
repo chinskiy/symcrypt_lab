@@ -1,0 +1,2 @@
+from lfsr import LFSR
+
