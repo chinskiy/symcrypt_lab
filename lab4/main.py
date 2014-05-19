@@ -1,2 +1,13 @@
-from lfsr import LFSR
+from lab4.lfrs import *
+from lab4.cryptoanaliz import *
+
+if __name__ == '__main__':
+    l1 = LFSR([1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1],
+              [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1])
+    l2 = LFSR([1, 0, 0, 0, 0, 1, 1, 0, 1, 1],
+              [0, 0, 0, 0, 0, 0, 0, 0, 0, 1])
+    l3 = LFSR([1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1],
+              [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1])
+    g1 = GeffeGen(l1, l2, l3)
+    n1, n2, n3 = 113, 97, 104
 
