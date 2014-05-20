@@ -1,7 +1,7 @@
 class LFSR():
-    def __init__(self, polyn, state):
-        """"(list(int), list(int)) -> None"""
-        self.polyn, self.state = polyn[::-1][1:len(polyn)], state
+    def __init__(self, polyn):
+        """"(list(int)) -> None"""
+        self.polyn = polyn[::-1][1:len(polyn)]
 
     def step(self):
         """(None) -> bool"""
@@ -18,6 +18,10 @@ class LFSR():
             result.append(self.step())
         return result
 
+    def set_state(self, state):
+        """(list(int)) -> None"""
+        self.state = state
+
 
 class GeffeGen():
     def __init__(self, l1, l2, l3):
@@ -28,3 +32,10 @@ class GeffeGen():
         """(None) -> bool"""
         x, y, s = self.l1.step(), self.l2.step(), self.l3.step()
         return s & x ^ (1 ^ s) & y
+
+    def gener_sequence(self, length):
+        """(int) -> list(int)"""
+        result = []
+        for _ in range(length):
+            result.append(self.step())
+        return result

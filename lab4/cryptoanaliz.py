@@ -2,6 +2,27 @@ def findrstat(x, z):
     r = 0
     for _ in range(len(x)):
         r += x[_] ^ z[_]
+    return r
+
+
+def nextvect(arr):
+    arr = arr[::-1]
+    c_b = 1
+    for i in range(len(arr)):
+        tmp, arr[i] = arr[i], arr[i] ^ c_b
+        c_b &= tmp
+    return arr[::-1]
+
+
+def get_candidates(lfrs, arr, numb, c):
+    cand = []
+    for _ in range(2 ** len(arr) - 1):
+        lfrs.set_state(arr)
+        seq = lfrs.gener_sequence(numb)
+        if findrstat(seq, code) > c:
+            cand.append(seq)
+        arr = nextvect(arr)
+    return cand
 
 
 strcode = '100001111110111101001001111001001110001101011001100101101000110000111011001' \
