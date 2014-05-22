@@ -13,10 +13,7 @@ class LFSR():
 
     def gener_sequence(self, length):
         """(int) -> list(int)"""
-        result = []
-        for _ in range(length):
-            result.append(self.step())
-        return result
+        return [self.step() for _ in range(length)]
 
     def set_state(self, state):
         """(list(int)) -> None"""
@@ -39,7 +36,4 @@ class GeffeGen():
 
     def gen_sequence(self, length):
         """(int) -> list(int)"""
-        result = []
-        for _ in range(length):
-            result.append(self.step())
-        return result
+        return [self.step() for _ in range(length)]
