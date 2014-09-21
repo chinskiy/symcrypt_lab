@@ -5,7 +5,8 @@ class LFSR():
     def step(self):
         numb = 0
         for _ in range(len(self.polyn)):
-            numb ^= self.polyn[_] & self.state[_]
+            if self.polyn[_] & self.state[_] == 1:
+                numb ^= 1
         self.state.append(numb)
         return self.state.pop(0)
 
